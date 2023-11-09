@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 class Dish extends Model
 {
     use HasFactory;
@@ -19,5 +21,10 @@ class Dish extends Model
             'image_url' => 'required|url',
             'price' => 'required|numeric',
         ];
+    }
+
+    public function ratings(): HasMany
+    {
+        return $this->hasMany(DishRating::class);
     }
 }
